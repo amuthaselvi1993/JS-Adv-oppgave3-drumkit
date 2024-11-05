@@ -20,10 +20,10 @@ for (let sound in drumSounds) {
   desc.textContent = `${sound[0].toUpperCase() + sound.slice(1)}`;
   const shortcut = document.createElement("p");
   shortcut.classList.add("shortcut");
-  shortcut.textContent = `Shortcut ${drumSounds[sound]}`;
+  shortcut.textContent = `Press ${drumSounds[sound]}`;
   item.id = `${sound}`;
   item.classList.add("display");
-  item.append(desc, shortcut, itemImage);
+  item.append(shortcut, itemImage);
   drumContainer.append(item);
   itemImage.addEventListener("click", () => {
     new Audio(`./sounds/${sound}.wav`).play();
