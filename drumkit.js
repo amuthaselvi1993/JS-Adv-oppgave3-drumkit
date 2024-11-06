@@ -34,15 +34,29 @@ for (let sound in drumSounds) {
   });
 }
 window.addEventListener("keydown", (e) => {
-  for (let sound in drumSounds) {
-    if (e.key === drumSounds[sound]) {
-      new Audio(`./sounds/${sound}.wav`).play();
-      const item = drumContainer.querySelector(`#${sound}`);
-      console.log(item);
-      item.classList.add("highlight-sound");
-      setTimeout(function () {
-        item.classList.remove("highlight-sound");
-      }, 300);
-    }
+  //Endre sin løsning
+  // for (let sound in drumSounds) {
+  //   if (e.key === drumSounds[sound]) {
+  //     new Audio(`./sounds/${sound}.wav`).play();
+  //     const item = drumContainer.querySelector(`#${sound}`);
+  //     console.log(item);
+  //     item.classList.add("highlight-sound");
+  //     setTimeout(function () {
+  //       item.classList.remove("highlight-sound");
+  //     }, 300);
+  //   }
+  // }
+  //Ny løsning
+  const sound = Object.keys(drumSounds).find(
+    (key) => drumSounds[key] === e.key
+  ); //Her finner vi hvilken lyd må vi spille fra tastet knapp. Ved bruk av Object class sin innbygde method
+  if (sound) {
+    new Audio(`./sounds/${sound}.wav`).play();
+    const item = drumContainer.querySelector(`#${sound}`);
+    console.log(item);
+    item.classList.add("highlight-sound");
+    setTimeout(function () {
+      item.classList.remove("highlight-sound");
+    }, 300);
   }
 });
